@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Constellation.AutumnConstellation;
 import Constellation.Constellation;
+import Constellation.Constellationkind;
 import Constellation.SummerConstellation;
 
 public class ConstellationManager {
@@ -17,22 +19,29 @@ public class ConstellationManager {
 		while (kind != 1 && kind != 2) {
 			System.out.println("1 for Spring");
 			System.out.println("2 for Summer");
-			System.out.println("Selec num for Constellation Kind between 1 and 2: ");
+			System.out.println("3 for Autumn");
+			System.out.println("Selec num for 1, 2, or 3 Constellation Kind: ");
 			kind = input.nextInt();
 			if (kind == 1) {
-				constellation = new Constellation();
+				constellation = new Constellation(Constellationkind.Spring);
 				constellation.getUserInput(input);
 				constellations.add(constellation);
 				break;
 			}
 			else if (kind == 2) {
-				constellation = new SummerConstellation();
+				constellation = new SummerConstellation(Constellationkind.Summer);
+				constellation.getUserInput(input);
+				constellations.add(constellation);
+				break;
+			}
+			else if (kind == 3) {
+				constellation = new AutumnConstellation(Constellationkind.Autumn);
 				constellation.getUserInput(input);
 				constellations.add(constellation);
 				break;
 			}
 			else {
-				System.out.println("Selec num for Constellation Kind between 1 and 2: ");
+				System.out.println("Selec num for 1, 2, or 3 Constellation Kind: ");
 			}
 		}
 	}

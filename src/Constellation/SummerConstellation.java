@@ -4,6 +4,10 @@ import java.util.Scanner;
 
 public class SummerConstellation extends Constellation {
 	
+	public SummerConstellation(Constellationkind Kind) {
+		super(Kind);
+	}
+	
 	public void getUserInput(Scanner input) {
 		System.out.println("Constellation Number: ");
 		int Number = input.nextInt();
@@ -30,9 +34,5 @@ public class SummerConstellation extends Constellation {
 		System.out.print("Constellation Name: ");
 		String Name = input.next();
 		this.setName(Name);
-		
-		System.out.print("Constellation MainStar: ");
-		String MainStar = input.next();
-		this.setMainStar(MainStar);
 	}
 }

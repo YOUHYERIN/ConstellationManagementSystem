@@ -6,9 +6,14 @@ public class Constellation {
 	protected Constellationkind kind = Constellationkind.Spring;
 	protected String Name;
 	protected String MainStar;
+	protected String Season;
 	protected int Number;
 	
 	public Constellation() {
+	}
+	
+	public Constellation(Constellationkind Kind) {
+		this.kind = Kind;
 	}
 	
 	public Constellation(int Number, String Name) {
@@ -16,9 +21,11 @@ public class Constellation {
 		this.Name = Name;
 	}
 	
-	public Constellation(int Number, String name, String MainStar) {
+	public Constellation(Constellationkind kind, int Number, String Name, String MainStar, String Season) {
+		this.kind = kind;
 		this.Number = Number;
 		this.Name = Name;
+		this.Season = Season;
 		this.MainStar = MainStar;
 	}
 	public Constellationkind getKind() {
@@ -37,12 +44,20 @@ public class Constellation {
 		Name = name;
 	}
 
-	public String getMainStar() {
+	public String getMainStarr() {
 		return MainStar;
 	}
 
 	public void setMainStar(String mainStar) {
 		MainStar = mainStar;
+	}
+	
+	public String getSeason() {
+		return Season;
+	}
+	
+	public void setSeason(String season) {
+		Season = season;
 	}
 
 	public int getNumber() {
@@ -55,7 +70,24 @@ public class Constellation {
 
 
 	public void printInfo() {
-		System.out.println("Number: " + Number + "Name: " + Name + "MainStar: " + MainStar);
+		String skind = "none";
+		switch(this.kind) {
+		case Spring:
+			skind = "Spring.";
+			break;
+		case Summer:
+			skind = "Summer.";
+			break;
+		case Autumn:
+			skind = "Autumn.";
+			break;
+		case Winter:
+			skind = "Winter.";
+			break;
+		default:
+			
+		}
+		System.out.println("Kind: " + skind + "Number: " + Number + "Name: " + Name + "MainStar: " + MainStar + "Season: " + Season);
 	}
 	
 	public void getUserInput(Scanner input) {

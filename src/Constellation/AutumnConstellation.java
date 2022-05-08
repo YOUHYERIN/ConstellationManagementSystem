@@ -2,27 +2,46 @@ package Constellation;
 
 import java.util.Scanner;
 
-public class AutumnConstellation extends Constellation {
+public class AutumnConstellation extends Constellation implements Constellationinput {
 
 	protected String OutherStar;
+	
+	public AutumnConstellation(Constellationkind Kind) {
+		super(Kind);
+	}
 	
 	public void getUserInput(Scanner input) {
 		System.out.println("Constellation Number: ");
 		int Number = input.nextInt();
 		this.setNumber(Number);
 		
-		
 		char answer = 'x';
+		while (answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N') {
+			System.out.println("Do you have an Main Star? (Y/N): ");
+			answer =input.next().charAt(0);
+			if (answer == 'y' || answer == 'Y') {
+				System.out.println("Main Star Name: ");
+				String MainStar = input.next();
+				this.setMainStar(MainStar);
+			}
+			else if (answer == 'n' || answer == 'N') {
+				this.setMainStar("");
+			}
+			else {
+			}
+		}
+		
+		answer = 'x';
 		while (answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N') {
 			System.out.println("Do you have an Other Star? (Y/N): ");
 			answer =input.next().charAt(0);
 			if (answer == 'y' || answer == 'Y') {
 				System.out.println("Other Star Name: ");
-				String AlphaStar = input.next();
-				this.setAlphaStar(AlphaStar);
+				String MainStar = input.next();
+				this.setMainStar(MainStar);
 			}
 			else if (answer == 'n' || answer == 'N') {
-				this.setAlphaStar("");
+				this.setMainStar("");
 			}
 			else {
 			}
@@ -32,9 +51,26 @@ public class AutumnConstellation extends Constellation {
 		System.out.print("Constellation Name: ");
 		String Name = input.next();
 		this.setName(Name);
-		
-		System.out.print("Constellation Season: ");
-		String Season = input.next();
-		this.setSeason(Season);
+	}
+	
+	public void printInfo() {
+		String skind = "none";
+		switch(this.kind) {
+		case Spring:
+			skind = "Spring.";
+			break;
+		case Summer:
+			skind = "Summer.";
+			break;
+		case Autumn:
+			skind = "Autumn.";
+			break;
+		case Winter:
+			skind = "Winter.";
+			break;
+		default:
+			
+		}
+		System.out.println("Kind: " + skind + "Number: " + Number + "Name: " + Name + "MainStar: " + MainStar + "OtherStar" + MainStar + "Season: " + Season);
 	}
 }

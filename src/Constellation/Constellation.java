@@ -2,7 +2,7 @@ package Constellation;
 
 import java.util.Scanner;
 
-public class Constellation {
+public abstract class Constellation {
 	protected Constellationkind kind = Constellationkind.Spring;
 	protected String Name;
 	protected String MainStar;
@@ -68,39 +68,6 @@ public class Constellation {
 		Number = number;
 	}
 
+	public abstract void printInfo();
 
-	public void printInfo() {
-		String skind = "none";
-		switch(this.kind) {
-		case Spring:
-			skind = "Spring.";
-			break;
-		case Summer:
-			skind = "Summer.";
-			break;
-		case Autumn:
-			skind = "Autumn.";
-			break;
-		case Winter:
-			skind = "Winter.";
-			break;
-		default:
-			
-		}
-		System.out.println("Kind: " + skind + "Number: " + Number + "Name: " + Name + "MainStar: " + MainStar + "Season: " + Season);
-	}
-	
-	public void getUserInput(Scanner input) {
-		System.out.println("Constellation Number: ");
-		int Number = input.nextInt();
-		this.setNumber(Number);
-		
-		System.out.print("Constellation Name: ");
-		String Name = input.next();
-		this.setName(Name);
-		
-		System.out.print("Constellation MainStar: ");
-		String MainStar = input.next();
-		this.setMainStar(MainStar);
-	}
 }

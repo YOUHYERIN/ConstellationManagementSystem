@@ -39,6 +39,6 @@ public class SpringConstellation extends Constellation implements Constellationi
 			break;
 		default:
 		}
-		System.out.println("Kind: " + skind + "Number: " + Number + "Name: " + Name + "MainStar: " + MainStar + "Season: " + Season);
+		System.out.println("Kind: " + skind + "Number: " + Number + "Name: " + Name + "MainStar: " + MainStar);
 	}
 }

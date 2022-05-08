@@ -71,6 +71,6 @@ public class AutumnConstellation extends Constellation implements Constellationi
 		default:
 			
 		}
-		System.out.println("Kind: " + skind + "Number: " + Number + "Name: " + Name + "MainStar: " + MainStar + "OtherStar" + MainStar + "Season: " + Season);
+		System.out.println("Kind: " + skind + "Number: " + Number + "Name: " + Name + "MainStar: " + MainStar + "OtherStar" + MainStar);
 	}
 }

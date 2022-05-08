@@ -3,11 +3,13 @@ import java.util.Scanner;
 
 import Constellation.AutumnConstellation;
 import Constellation.Constellation;
+import Constellation.Constellationinput;
 import Constellation.Constellationkind;
+import Constellation.SpringConstellation;
 import Constellation.SummerConstellation;
 
 public class ConstellationManager {
-	ArrayList<Constellation> constellations = new ArrayList<Constellation>();
+	ArrayList<Constellationinput> constellations = new ArrayList<Constellationinput>();
 	Scanner input;
 	ConstellationManager(Scanner input) {
 		this.input = input;
@@ -15,7 +17,7 @@ public class ConstellationManager {
 	
 	public void addConstellation() {
 		int kind = 0;
-		Constellation constellation;
+		Constellationinput constellationinput;
 		while (kind != 1 && kind != 2) {
 			System.out.println("1 for Spring");
 			System.out.println("2 for Summer");
@@ -23,21 +25,21 @@ public class ConstellationManager {
 			System.out.println("Selec num for 1, 2, or 3 Constellation Kind: ");
 			kind = input.nextInt();
 			if (kind == 1) {
-				constellation = new Constellation(Constellationkind.Spring);
-				constellation.getUserInput(input);
-				constellations.add(constellation);
+				constellationinput = new SpringConstellation(Constellationkind.Spring);
+				constellationinput.getUserInput(input);
+				constellations.add(constellationinput);
 				break;
 			}
 			else if (kind == 2) {
-				constellation = new SummerConstellation(Constellationkind.Summer);
-				constellation.getUserInput(input);
-				constellations.add(constellation);
+				constellationinput = new SummerConstellation(Constellationkind.Summer);
+				constellationinput.getUserInput(input);
+				constellations.add(constellationinput);
 				break;
 			}
 			else if (kind == 3) {
-				constellation = new AutumnConstellation(Constellationkind.Autumn);
-				constellation.getUserInput(input);
-				constellations.add(constellation);
+				constellationinput = new AutumnConstellation(Constellationkind.Autumn);
+				constellationinput.getUserInput(input);
+				constellations.add(constellationinput);
 				break;
 			}
 			else {
@@ -71,8 +73,8 @@ public class ConstellationManager {
 		System.out.print("Constellation Number: ");
 		int constellationNumber = input.nextInt();
 		for (int i = 0; i < constellations.size(); i++) {
-			Constellation constellation = constellations.get(i);
-			if (constellation.getNumber() == constellationNumber) {
+			Constellationinput constellationinput = constellations.get(i);
+			if (constellationinput.getNumber() == constellationNumber) {
 				int num = -1;
 				while (num != 5) {
 					System.out.println("** Constellation Info Edit Menu **");
@@ -85,17 +87,17 @@ public class ConstellationManager {
 					if (num == 1) {
 						System.out.println("Constellation Number: ");
 						int Number = input.nextInt();
-						constellation.setNumber(Number);
+						constellationinput.setNumber(Number);
 					}
 					else if (num == 2) {
 						System.out.println("Constellation Name: ");
 						String Name = input.next();
-						constellation.setName(Name);
+						constellationinput.setName(Name);
 					}
 					else if (num == 3) {
 						System.out.println("Constellation MainStar: ");
 						String MainStar = input.next();
-						constellation.setMainStar(MainStar);
+						constellationinput.setMainStar(MainStar);
 					}
 					else {
 						continue;

@@ -22,13 +22,12 @@ public class AutumnConstellation extends Constellation implements Constellationi
 			answer =input.next().charAt(0);
 			try {
 				if (answer == 'y' || answer == 'Y') {
-					System.out.println("Constellation MainStar: ");
-					setConstellationMainStar(input);
-					break;
+					System.out.println("Main Star Name: ");
+					String MainStar = input.next();
+					this.setMainStar(MainStar);
 				}
 				else if (answer == 'n' || answer == 'N') {
 					this.setMainStar("");
-					break;
 				}
 				else {
 				}

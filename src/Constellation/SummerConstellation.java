@@ -2,6 +2,8 @@ package Constellation;
 
 import java.util.Scanner;
 
+import exception.MainStarFormatException;
+
 public class SummerConstellation extends Constellation implements Constellationinput {
 	
 	public SummerConstellation(Constellationkind Kind) {
@@ -9,31 +11,50 @@ public class SummerConstellation extends Constellation implements Constellationi
 	}
 	
 	public void getUserInput(Scanner input) {
-		System.out.println("Constellation Number: ");
-		int Number = input.nextInt();
-		this.setNumber(Number);
-		
-		
+		setConstellationNumber(input);
+		setConstellationName(input);
+
 		char answer = 'x';
 		while (answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N') {
 			System.out.println("Do you have an Main Star? (Y/N): ");
 			answer =input.next().charAt(0);
-			if (answer == 'y' || answer == 'Y') {
-				System.out.println("Main Star Name: ");
-				String MainStar = input.next();
-				this.setMainStar(MainStar);
+			try {
+				if (answer == 'y' || answer == 'Y') {
+					System.out.println("Main Star Name: ");
+					String MainStar = input.next();
+					this.setMainStar(MainStar);
+				}
+				else if (answer == 'n' || answer == 'N') {
+					this.setMainStar("");
+				}
+				else {
+				}
 			}
-			else if (answer == 'n' || answer == 'N') {
-				this.setMainStar("");
-			}
-			else {
+			catch(MainStarFormatException e) {
+				System.out.println("Incorrect MainStar Format. Put the MainStar that contains '.'");
 			}
 		}
 		
-		
-		System.out.print("Constellation Name: ");
-		String Name = input.next();
-		this.setName(Name);
+		answer = 'x';
+		while (answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N') {
+			System.out.println("Do you have an Other Star? (Y/N): ");
+			answer =input.next().charAt(0);
+			try {
+				if (answer == 'y' || answer == 'Y') {
+					System.out.println("Other Star Name: ");
+					String MainStar = input.next();
+					this.setMainStar(MainStar);
+				}
+				else if (answer == 'n' || answer == 'N') {
+					this.setMainStar("");
+				}
+				else {
+				}
+			}
+			catch(MainStarFormatException e) {
+				System.out.println("Incorrect MainStar Format. Put the MainStar that contains '.'");
+			}
+		}
 	}
 	
 	public void printInfo() {
@@ -53,6 +74,6 @@ public class SummerConstellation extends Constellation implements Constellationi
 			break;
 		default:
 		}
-		System.out.println("Kind: " + skind + "Number: " + Number + "Name: " + Name + "MainStar: " + MainStar);
+		System.out.println("Kind: " + skind + "  Number: " + Number + "  Name: " + Name + "  MainStar: " + MainStar);
 	}
 }

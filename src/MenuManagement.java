@@ -52,7 +52,7 @@ public class MenuManagement {
 		System.out.println("3. Edit Constellation");
 		System.out.println("4. View Constellations");
 		System.out.println("5. Show a menu");
-		System.out.println("5. Exit");
+		System.out.println("6. Exit");
 		System.out.println("Select one number between 1-6: ");
 	}
 }

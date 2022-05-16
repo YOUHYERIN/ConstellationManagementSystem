@@ -2,6 +2,8 @@ package Constellation;
 
 import java.util.Scanner;
 
+import exception.MainStarFormatException;
+
 public abstract class Constellation {
 	protected Constellationkind kind = Constellationkind.Spring;
 	protected String Name;
@@ -28,6 +30,7 @@ public abstract class Constellation {
 		this.Season = Season;
 		this.MainStar = MainStar;
 	}
+	
 	public Constellationkind getKind() {
 		return kind;
 	}
@@ -48,8 +51,11 @@ public abstract class Constellation {
 		return MainStar;
 	}
 
-	public void setMainStar(String mainStar) {
-		MainStar = mainStar;
+	public void setMainStar(String mainStar) throws MainStarFormatException {
+		if (!mainStar.contains(".") && !mainStar.equals("")) {
+			throw new MainStarFormatException();
+		}
+		this.MainStar = mainStar;
 	}
 	
 	public String getSeason() {
@@ -69,5 +75,50 @@ public abstract class Constellation {
 	}
 
 	public abstract void printInfo();
+	
+	public void setConstellationNumber(Scanner input) {
+		System.out.println("Constellation Number: ");
+		int Number = input.nextInt();
+		this.setNumber(Number);
+	}
+	
+	public void setConstellationName(Scanner input) {
+		System.out.print("Constellation Name: ");
+		String Name = input.next();
+		this.setName(Name);
+	}
+	
+	public void setConstellationMainStar(Scanner input) {
+		String mainStar = "";
+		while (!mainStar.contains(".")) {
+			System.out.println("Constellation MainStar: ");
+			mainStar = input.next();
+			try {
+				this.setMainStar(mainStar);
+			} catch (MainStarFormatException e) {
+				System.out.println("Incorrect MainStar Format. Put the MainStar that contains '.'");
+			}
+		}
+	}
+	
+	public String getKindSrting() {
+		String skind = "none";
+		switch(this.kind) {
+		case Spring:
+			skind = "Spr";
+			break;
+		case Summer:
+			skind = "Sum";
+			break;
+		case Autumn:
+			skind = "Aut";
+			break;
+		case Winter:
+			skind = "Win";
+			break;
+		default:
+		}
+		return skind;
+	}
 
 }

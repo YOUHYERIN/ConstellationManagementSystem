@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import Constellation.AutumnConstellation;
@@ -7,6 +8,7 @@ import Constellation.Constellationinput;
 import Constellation.Constellationkind;
 import Constellation.SpringConstellation;
 import Constellation.SummerConstellation;
+import exception.MainStarFormatException;
 
 public class ConstellationManager {
 	ArrayList<Constellationinput> constellations = new ArrayList<Constellationinput>();
@@ -18,32 +20,41 @@ public class ConstellationManager {
 	public void addConstellation() {
 		int kind = 0;
 		Constellationinput constellationinput;
-		while (kind != 1 && kind != 2) {
-			System.out.println("1 for Spring");
-			System.out.println("2 for Summer");
-			System.out.println("3 for Autumn");
-			System.out.println("Selec num for 1, 2, or 3 Constellation Kind: ");
-			kind = input.nextInt();
-			if (kind == 1) {
-				constellationinput = new SpringConstellation(Constellationkind.Spring);
-				constellationinput.getUserInput(input);
-				constellations.add(constellationinput);
-				break;
-			}
-			else if (kind == 2) {
-				constellationinput = new SummerConstellation(Constellationkind.Summer);
-				constellationinput.getUserInput(input);
-				constellations.add(constellationinput);
-				break;
-			}
-			else if (kind == 3) {
-				constellationinput = new AutumnConstellation(Constellationkind.Autumn);
-				constellationinput.getUserInput(input);
-				constellations.add(constellationinput);
-				break;
-			}
-			else {
+		while (kind < 1 || kind > 3) {
+			try {
+				System.out.println("1 for Spring");
+				System.out.println("2 for Summer");
+				System.out.println("3 for Autumn");
 				System.out.println("Selec num for 1, 2, or 3 Constellation Kind: ");
+				kind = input.nextInt();
+				if (kind == 1) {
+					constellationinput = new SpringConstellation(Constellationkind.Spring);
+					constellationinput.getUserInput(input);
+					constellations.add(constellationinput);
+					break;
+				}
+				else if (kind == 2) {
+					constellationinput = new SummerConstellation(Constellationkind.Summer);
+					constellationinput.getUserInput(input);
+					constellations.add(constellationinput);
+					break;
+				}
+				else if (kind == 3) {
+					constellationinput = new AutumnConstellation(Constellationkind.Autumn);
+					constellationinput.getUserInput(input);
+					constellations.add(constellationinput);
+					break;
+				}
+				else {
+					System.out.println("Selec num for 1, 2, or 3 Constellation Kind: ");
+				}
+			}
+			catch(InputMismatchException e) {
+				System.out.println("Plese put an integer between 1 and 3!");
+				if (input.hasNext()) {
+					input.next();
+				}
+				kind = 0;	
 			}
 		}
 	}
@@ -97,7 +108,12 @@ public class ConstellationManager {
 					else if (num == 3) {
 						System.out.println("Constellation MainStar: ");
 						String MainStar = input.next();
-						constellationinput.setMainStar(MainStar);
+						try {
+							constellationinput.setMainStar(MainStar);
+						} catch (MainStarFormatException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					}
 					else {
 						continue;

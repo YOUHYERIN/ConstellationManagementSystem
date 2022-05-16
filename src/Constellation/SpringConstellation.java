@@ -18,7 +18,22 @@ public class SpringConstellation extends Constellation implements Constellationi
 	}
 	
 	public void printInfo() {
-		String skind = getKindSrting();
+		String skind = "none";
+		switch(this.kind) {
+		case Spring:
+			skind = "Spring.";
+			break;
+		case Summer:
+			skind = "Summer.";
+			break;
+		case Autumn:
+			skind = "Autumn.";
+			break;
+		case Winter:
+			skind = "Winter.";
+			break;
+		default:
+		}
 		System.out.println("Kind: " + skind + "  Number: " + Number + "  Name: " + Name + "  MainStar: " + MainStar);
 	}
 }

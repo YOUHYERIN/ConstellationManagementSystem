@@ -17,4 +17,10 @@ public interface Constellationinput {
 	public void getUserInput(Scanner input);
 	
 	public void printInfo();
+	
+	public void setConstellationNumber(Scanner input);
+	
+	public void setConstellationName(Scanner input);
+	
+	public void setConstellationMainStar(Scanner input);
 }

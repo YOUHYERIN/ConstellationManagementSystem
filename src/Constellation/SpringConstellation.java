@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import exception.MainStarFormatException;
 
-public class SpringConstellation extends Constellation implements Constellationinput {
+public class SpringConstellation extends Constellation {
 	
 	public SpringConstellation(Constellationkind Kind) {
 		super(Kind);
@@ -18,22 +18,7 @@ public class SpringConstellation extends Constellation implements Constellationi
 	}
 	
 	public void printInfo() {
-		String skind = "none";
-		switch(this.kind) {
-		case Spring:
-			skind = "Spring.";
-			break;
-		case Summer:
-			skind = "Summer.";
-			break;
-		case Autumn:
-			skind = "Autumn.";
-			break;
-		case Winter:
-			skind = "Winter.";
-			break;
-		default:
-		}
+		String skind = getKindString();
 		System.out.println("Kind: " + skind + "  Number: " + Number + "  Name: " + Name + "  MainStar: " + MainStar);
 	}
 }

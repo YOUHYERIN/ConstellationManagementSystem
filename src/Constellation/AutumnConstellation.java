@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import exception.MainStarFormatException;
 
-public class AutumnConstellation extends Constellation implements Constellationinput {
+public class AutumnConstellation extends WinterConstellation{
 
 	protected String OutherStar;
 	
@@ -15,69 +15,13 @@ public class AutumnConstellation extends Constellation implements Constellationi
 	public void getUserInput(Scanner input) {
 		setConstellationNumber(input);
 		setConstellationName(input);
-		
-		char answer = 'x';
-		while (answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N') {
-			System.out.println("Do you have an Main Star? (Y/N): ");
-			answer =input.next().charAt(0);
-			try {
-				if (answer == 'y' || answer == 'Y') {
-					System.out.println("Main Star Name: ");
-					String MainStar = input.next();
-					this.setMainStar(MainStar);
-				}
-				else if (answer == 'n' || answer == 'N') {
-					this.setMainStar("");
-				}
-				else {
-				}
-			}
-			catch(MainStarFormatException e) {
-				System.out.println("Incorrect MainStar Format. Put the MainStar that contains '.'");
-			}
-		}
-		
-		answer = 'x';
-		while (answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N') {
-			System.out.println("Do you have an Other Star? (Y/N): ");
-			answer =input.next().charAt(0);
-			try {
-				if (answer == 'y' || answer == 'Y') {
-					System.out.println("Other Star Name: ");
-					setConstellationMainStar(input);
-					break;
-				}
-				else if (answer == 'n' || answer == 'N') {
-					this.setMainStar("");
-					break;
-				}
-				else {
-				}
-			}
-			catch(MainStarFormatException e) {
-				System.out.println("Incorrect MainStar Format. Put the MainStar that contains '.'");
-			}
-		}
+		setConstellationMainStarwithYN(input);
+		setConstellationOtherStarwithYN(input);
 	}
 	
+	
 	public void printInfo() {
-		String skind = "none";
-		switch(this.kind) {
-		case Spring:
-			skind = "Spring.";
-			break;
-		case Summer:
-			skind = "Summer.";
-			break;
-		case Autumn:
-			skind = "Autumn.";
-			break;
-		case Winter:
-			skind = "Winter.";
-			break;
-		default:
-			
-		}
+		String skind = getKindString();
 		System.out.println("Kind: " + skind + "  Number: " + Number + "  Name: " + Name + "  MainStar: " + MainStar);
 	}
 }

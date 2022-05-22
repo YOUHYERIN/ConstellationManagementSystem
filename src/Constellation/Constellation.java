@@ -1,10 +1,16 @@
 package Constellation;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import exception.MainStarFormatException;
 
-public abstract class Constellation {
+public abstract class Constellation implements Constellationinput, Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 239181720981392558L;
+	
 	protected Constellationkind kind = Constellationkind.Spring;
 	protected String Name;
 	protected String MainStar;
@@ -76,6 +82,7 @@ public abstract class Constellation {
 
 	public abstract void printInfo();
 	
+
 	public void setConstellationNumber(Scanner input) {
 		System.out.println("Constellation Number: ");
 		int Number = input.nextInt();
@@ -101,20 +108,20 @@ public abstract class Constellation {
 		}
 	}
 	
-	public String getKindSrting() {
+	public String getKindString() {
 		String skind = "none";
 		switch(this.kind) {
 		case Spring:
-			skind = "Spr";
+			skind = "Spring.";
 			break;
 		case Summer:
-			skind = "Sum";
+			skind = "Summer.";
 			break;
 		case Autumn:
-			skind = "Aut";
+			skind = "Autumn.";
 			break;
 		case Winter:
-			skind = "Win";
+			skind = "Winter.";
 			break;
 		default:
 		}

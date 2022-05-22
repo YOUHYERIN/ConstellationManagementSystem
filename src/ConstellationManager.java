@@ -1,18 +1,22 @@
+ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import Constellation.AutumnConstellation;
-import Constellation.Constellation;
 import Constellation.Constellationinput;
 import Constellation.Constellationkind;
 import Constellation.SpringConstellation;
 import Constellation.SummerConstellation;
-import exception.MainStarFormatException;
 
-public class ConstellationManager {
+public class ConstellationManager implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3477057238430703522L;
+	
 	ArrayList<Constellationinput> constellations = new ArrayList<Constellationinput>();
-	Scanner input;
+	transient Scanner input;
 	ConstellationManager(Scanner input) {
 		this.input = input;
 	}
@@ -62,6 +66,11 @@ public class ConstellationManager {
 	public void deletConstellation() {
 		System.out.print("Constellation Nmber: ");
 		int constellationNumber = input.nextInt();
+		int index = findIndex(constellationNumber);
+		removefromConstellation(index, constellationNumber);
+	}
+	
+	public int findIndex(int constellationNumber) {
 		int index = -1;
 		for (int i = 0; i < constellations.size(); i++) {
 			if (constellations.get(i).getNumber() == constellationNumber) {
@@ -69,13 +78,18 @@ public class ConstellationManager {
 				break;
 			}
 		}
+		return index;
+	}
+	
+	public int removefromConstellation(int index, int constellationNumber) {
 		if (index >= 0) {
 			constellations.remove(index);
 			System.out.println("the constellation" + constellationNumber + "is deleted");
+			return 1;
 		}
 		else {
 			System.out.println("the constellation has not been registered");
-			return;
+			return 0;
 		}
 	}
 		
@@ -84,38 +98,23 @@ public class ConstellationManager {
 		System.out.print("Constellation Number: ");
 		int constellationNumber = input.nextInt();
 		for (int i = 0; i < constellations.size(); i++) {
-			Constellationinput constellationinput = constellations.get(i);
-			if (constellationinput.getNumber() == constellationNumber) {
+			Constellationinput constellation = constellations.get(i);
+			if (constellation.getNumber() == constellationNumber) {
 				int num = -1;
 				while (num != 5) {
-					System.out.println("** Constellation Info Edit Menu **");
-					System.out.println("1. Edit Number");
-					System.out.println("2. Edit Name");
-					System.out.println("3. Edit MainStar");
-					System.out.println("4. Exit");
-					System.out.println("Select one number between 1 - 5: ");
+					showEditMenu();
 					num = input.nextInt();
-					if (num == 1) {
-						System.out.println("Constellation Number: ");
-						int Number = input.nextInt();
-						constellationinput.setNumber(Number);
-					}
-					else if (num == 2) {
-						System.out.println("Constellation Name: ");
-						String Name = input.next();
-						constellationinput.setName(Name);
-					}
-					else if (num == 3) {
-						System.out.println("Constellation MainStar: ");
-						String MainStar = input.next();
-						try {
-							constellationinput.setMainStar(MainStar);
-						} catch (MainStarFormatException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-					}
-					else {
+					switch(num) {
+					case 1:
+						constellation.setConstellationNumber(input);
+						break;
+					case 2:
+						constellation.setConstellationName(input);
+						break;
+					case 3:
+						constellation.setConstellationMainStar(input);
+						break;
+					default:
 						continue;
 					}
 				}
@@ -125,11 +124,20 @@ public class ConstellationManager {
 	}
 	
 	public void viewConstellations() {
-//		System.out.print("Constellation Name: ");
-//		String constellationName = input.next();
 		System.out.println("# of registered constellations: " + constellations.size());
 		for (int i = 0; i < constellations.size(); i++) {
 			constellations.get(i).printInfo();
 		}
+	}
+	
+	public void showEditMenu() {
+		System.out.println("*** Constellation Managment System Menu ***");
+		System.out.println("1. Add Constellation");
+		System.out.println("2. Delet Constellation");
+		System.out.println("3. Edit Constellation");
+		System.out.println("4. View Constellations");
+		System.out.println("5. Show a menu");
+		System.out.println("6. Exit");
+		System.out.println("Select one number between 1-6: ");
 	}
 }

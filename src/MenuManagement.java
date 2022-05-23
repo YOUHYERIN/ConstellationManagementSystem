@@ -17,7 +17,9 @@ public class MenuManagement {
 		ConstellationManager constellationManager = getObject("constellationmanager.ser");
 		if (constellationManager == null) {
 			constellationManager = new ConstellationManager(input);
-		}		
+		} else {
+			constellationManager.input = input;
+		}
 		
 		selectMenu(input, constellationManager);
 		putObject(constellationManager, "constellationmanager.ser");

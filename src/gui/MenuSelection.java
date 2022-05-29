@@ -32,7 +32,6 @@ public class MenuSelection extends JFrame {
 		
 		this.add(panel1, BorderLayout.NORTH);
 		this.add(panel2, BorderLayout.CENTER);
-		
 		this.setVisible(true);
 		
 	}

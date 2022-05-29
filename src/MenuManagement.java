@@ -38,7 +38,7 @@ public class MenuManagement {
 					break;
 				case 2:
 					constellationManager.deletConstellation();
-					logger.log("delet a constellation");
+					logger.log("delete a constellation");
 					break;
 				case 3:
 					constellationManager.editConstellation();

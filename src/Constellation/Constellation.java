@@ -53,7 +53,7 @@ public abstract class Constellation implements Constellationinput, Serializable 
 		Name = name;
 	}
 
-	public String getMainStarr() {
+	public String getMainStar() {
 		return MainStar;
 	}
 

@@ -10,7 +10,11 @@ public interface Constellationinput {
 	
 	public void setNumber(int number);
 	
+	public String getName();
+	
 	public void setName(String name);
+	
+	public String getMainStar();
 	
 	public void setMainStar(String mainStar) throws MainStarFormatException;
 

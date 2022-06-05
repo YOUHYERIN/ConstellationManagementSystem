@@ -1,26 +1,53 @@
 package gui;
 
+import java.util.Vector;
+
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class ConstellationViewer extends JFrame {
+import Constellation.Constellationinput;
+import manager.ConstellationManager;
 
-	public ConstellationViewer() {
-		DefaultTableModel model = new DefaultTableModel();
-		model.addColumn("Number");
-		model.addColumn("Name");
-		model.addColumn("MainStar");
-		model.addColumn("Contact Info.");
-		
-		JTable table = new JTable(model);
-		JScrollPane sp = new JScrollPane(table);
-		
-		this.add(sp);
-		this.setSize(300, 300);
-	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    this.setVisible(true);
-		
-	}
+public class ConstellationViewer extends JPanel   {
+
+   WindowFrame frame;
+   
+   ConstellationManager constellationManager;
+
+
+   public ConstellationViewer(WindowFrame frame, ConstellationManager constellationManager) {
+      this.frame = frame;
+      this.constellationManager = constellationManager;
+      
+      System.out.println("***" + constellationManager.size() + "***");
+      
+      
+      DefaultTableModel model = new DefaultTableModel();
+      
+      model.addColumn("Number");
+      model.addColumn("Name");
+      model.addColumn("MainStar");
+      model.addColumn("Contact Info.");
+     
+      
+      for(int i=0; i< constellationManager.size(); i++ ) {
+         Vector<Object> row = new Vector();
+         Constellationinput si = constellationManager.get(i); 
+         row.add(si.getNumber());
+         row.add(si.getName());
+         row.add(si.getMainStar());
+         model.addRow(row);
+         
+      }
+      
+      JTable table = new JTable(model);
+      JScrollPane sp = new JScrollPane(table); 
+      
+      
+      this.add(sp);
+
+   }
 }

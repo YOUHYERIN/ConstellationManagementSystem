@@ -1,9 +1,11 @@
+package manager;
  import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import Constellation.AutumnConstellation;
+import Constellation.Constellation;
 import Constellation.Constellationinput;
 import Constellation.Constellationkind;
 import Constellation.SpringConstellation;
@@ -128,6 +130,14 @@ public class ConstellationManager implements Serializable {
 		for (int i = 0; i < constellations.size(); i++) {
 			constellations.get(i).printInfo();
 		}
+	}
+	
+	public int size() {
+		return constellations.size();
+	}
+	
+	public Constellationinput get(int index) {
+		return (Constellation) constellations.get(index);
 	}
 	
 	public void showEditMenu() {

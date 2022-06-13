@@ -23,6 +23,16 @@ public class ConstellationManager implements Serializable {
 		this.input = input;
 	}
 	
+	public void addConstellation(String number, String name, String mainStar) {
+		Constellationinput constellationinput = new SpringConstellation(Constellationkind.Spring);
+		constellationinput.getUserInput(input);
+		constellations.add(constellationinput);
+	}
+	
+	public void addConstellation(Constellationinput constellationinput) {
+		constellations.add(constellationinput);
+	}
+	
 	public void addConstellation() {
 		int kind = 0;
 		Constellationinput constellationinput;

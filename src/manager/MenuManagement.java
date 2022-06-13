@@ -79,9 +79,6 @@ public class MenuManagement {
 	
 	public static ConstellationManager getObject(String filename) {
 		ConstellationManager constellationManager = null;
-		
-		
-		
 		try {
 			FileInputStream file = new FileInputStream(filename);
 			ObjectInputStream in = new ObjectInputStream(file);
@@ -99,9 +96,7 @@ public class MenuManagement {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		return constellationManager;
-		
 	}
 	
 	public static void putObject(ConstellationManager constellationManager, String filename) {

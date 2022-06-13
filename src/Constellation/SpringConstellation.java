@@ -14,7 +14,6 @@ public class SpringConstellation extends Constellation {
 		setConstellationNumber(input);
 		setConstellationName(input);
 		setConstellationMainStar(input);
-
 	}
 	
 	public void printInfo() {

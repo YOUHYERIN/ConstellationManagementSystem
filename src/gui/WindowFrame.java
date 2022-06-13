@@ -20,7 +20,7 @@ public class WindowFrame extends JFrame {
 		
 		this.constellationManager = constellationManager;
 		menuselection = new MenuSelection(this);
-		constellationadder = new ConstellationAdder(this);
+		constellationadder = new ConstellationAdder(this, this.constellationManager);
 		constellationviewer = new ConstellationViewer(this, this.constellationManager);
 		
 		this.add(menuselection);		
@@ -59,9 +59,4 @@ public class WindowFrame extends JFrame {
 	public void setConstellationviewer(ConstellationViewer constellationviewer) {
 		this.constellationviewer = constellationviewer;
 	}
-
-
-
-
-
 }
